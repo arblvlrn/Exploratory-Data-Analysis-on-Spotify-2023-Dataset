@@ -7,11 +7,11 @@ Exploratory Data Analysis (EDA) is a method of analyzing data, focusing on its m
 
 ### What is the goal of this deliverable? 
 
-The goal of this deliverable is to explore and analyze a dataset of popular Spotify tracks from 2023. By examining and visualizing the data, we aim to uncover trends, popular artists, and other insights about the most-streamed songs. This will give a clear overview of the dataset and highlight key patterns. 
+The goal is to explore and analyze a dataset of popular Spotify tracks from 2023. By examining and visualizing the data, we aim to uncover trends, popular artists, and other insights about the most-streamed songs. This will give a clear overview of the dataset and highlight key patterns. 
 
 _____
 
 ## Overview of the Dataset?
 
-In this first part of the analysis, we are tasked
+In this first part of the analysis, we are tasked to 
 
