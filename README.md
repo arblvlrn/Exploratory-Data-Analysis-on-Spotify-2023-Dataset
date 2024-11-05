@@ -1,4 +1,10 @@
 # Exploratory-Data-Analysis-on-Spotify-2023-Dataset
+
+Author: Arabelle Y. Villarin
+
+Section: 2ECE-D
+
+Date Submitted: 
 ___
 
 ### What is an Exploratory Data Analysis? 
