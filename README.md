@@ -13,5 +13,12 @@ _____
 
 ## Overview of the Dataset?
 
-In this first part of the analysis, we are tasked to 
+In the first part of this analysis, we will focus on gathering basic information from the 2023 Spotify dataset. This includes finding the number of rows and columns, as well as identifying the data type of each column. This information is important because it helps us understand the structure of the dataset and ensures we can apply the right methods in the next steps of the analysis.
 
+Before starting the data analysis, I first imported the Python Libraries (Pandas, Matplotlib, and Seaborn)
+
+
+
+### How many rows and columns does the dataset contain?¶
+
+To get the rows and columns of the dataset, I used the variable named 'shape' and 
