@@ -20,7 +20,7 @@ _____
 Before starting the data analysis, I first imported the Python Libraries (Pandas, Matplotlib, and Seaborn):
 
 ````
-# Import necessary libraries
+# Import the necessary libraries
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -46,8 +46,8 @@ To get the rows and columns of the dataset, I used the variable named 'shape'. B
 shape = df.shape
 print("Rows and Columns: ", shape)
 ````
+![Screen Shot 2024-11-06 at 10 23 08 AM](https://github.com/user-attachments/assets/4c72923f-6f90-41a9-8d31-c2191a314732)
 
->>> result
 
 ### What are the data types of each column? Are there any missing values?
 
