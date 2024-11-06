@@ -54,7 +54,7 @@ print("Rows and Columns: ", shape)
 
 ### What are the data types of each column? Are there any missing values?
 
-To get the data types of each column I used the variable named ``dtype`` and used the pandas attribute ``.dtypes``.
+To get the data types for each column, I used the variable named ``dtype`` and the Pandas attribute ``.dtypes``.
  
 ````
 # Get the data types of each column
@@ -76,10 +76,10 @@ print("Missing values:\n", missing_values[missing_values > 0])
 ![Screen Shot 2024-11-06 at 12 34 54 PM](https://github.com/user-attachments/assets/03d56909-6a92-4930-8faf-c9578f18f829)
 
 ___
-### Since there are missing values, I used coerce to convert the data to handle invalid or non-convertible values by replacing them with NaN, preventing errors and ensuring smooth data processing.
+### Since there are missing values, I used ``coerce`` to convert the data to handle invalid or non-convertible values by replacing them with NaN, preventing errors and ensuring smooth data processing.
 
 ```
-# use coerce to convert the data
+# use coerce to convert the data to numeric
 df['streams'] = pd.to_numeric(df['streams'], errors='coerce')
 df['in_shazam_charts'] = pd.to_numeric(df['in_shazam_charts'], errors='coerce')
 df['key'] = pd.to_numeric(df['key'], errors='coerce')
@@ -99,45 +99,43 @@ sd = df['streams'].std
 
 print("Mean:\n",mean,"\n\n", "Median:\n",median,"\n\n","Standard Deviation:\n",sd)
 ````
+![Screen Shot 2024-11-06 at 1 23 43 PM](https://github.com/user-attachments/assets/dd124a11-2bbf-4bde-9e6b-cfb98ef22d77)
 
->>> result
 
 ### What is the distribution of released_year and artist_count? Are there any noticeable trends or outliers?
-
->>desc
+To analyze the distribution of the released_year and artist_count columns, I first extracted the data by assigning them to the variables ``released_year = df['released_year']`` and ``artist_count = df['artist_count']``. Then, I created separate histograms for each variable to visualize their distributions more clearly. To improve the clarity of the plots, I specified the figure size and used Matplotlib to generate the histograms for both released_year and artist_count.
 
 ````
-#Create a variable for released_year and artist_count
+# Create a variable for released_year and artist_count
 released_year = df['released_year']
 artist_count = df['artist_count']
 
-#Create separate histograms for each variable
-plt.figure(figsize=(8, 6))  #Input a figure size for a better visual
+# Input a figure size for a better visual
+plt.figure(figsize=(8, 6)) 
 
-#Histogram for released_year
+# Histogram for released_year
 plt.subplot(1, 2, 1)  #Create subplot at position 1, 1 (top left)
-plt.hist(released_year, bins=10)
+plt.hist(released_year, color='pink', bins=5)
 plt.xlabel('released_year')
 plt.title('Distribution of released_year')
 
-#Histogram for artist_count
+# Histogram for artist_count
 plt.subplot(1, 2, 2)  #Create subplot at position 1, 2 (top right)
-plt.hist(artist_count, bins=5)
+plt.hist(artist_count, color='skyblue', bins=5)
 plt.xlabel('artist_count')
 plt.title('Distribution of artist_count')
 ````
+![Screen Shot 2024-11-06 at 1 29 00 PM](https://github.com/user-attachments/assets/f27fefc4-92a5-4f48-91cd-a9b8915cc577)
 
->>>result
 
->>for outliers desc
-
+To identify outliers in the data, a box plot is the most effective visualization method. Therefore, I used a box plot to highlight any outliers.
 ````
 #Create a box plot to identify the outliers
 sns.boxplot(x='released_year', y='artist_count', data=df)
 plt.title('Box plot of artist_count by released_year')
 ````
+![Screen Shot 2024-11-06 at 1 37 16 PM](https://github.com/user-attachments/assets/f046474a-e413-4138-85ef-707710f99935)
 
->>>result
 
 ## Top Performers
 
