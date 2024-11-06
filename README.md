@@ -141,21 +141,35 @@ plt.title('Box plot of artist_count by released_year')
 In this part of the analysis, we aim to identify the track with the highest number of streams and determine the most frequently appearing artists in the dataset.
 
 ### Which track has the highest number of streams? Display the top 5 most streamed tracks.
-
->> desc
+To identify the track with the highest number of streams, I first used ``.idxmax()`` to find the index of the row with the maximum stream count. Then, I used ``df.loc`` to retrieve the track name corresponding to that index.
 
 ```ruby
 # Create a variable for streams
 streams = df['streams']
 
-# Get the top 5 most streamed stracks
-top_5_streams = df.nlargest(5, 'streams')['track_name']
+# Find the index of the row with the highest number of streams
+max_streams = streams.idxmax()
+
+# Identify the track name with the highest streams
+highest_streams = df.loc[max_streams, 'track_name']
 
 # Display the result
-print("Top 5 streams:\n", top_5_streams)
+print("Track with highest number of streams: ", highest_streams)
 ```
+![Screen Shot 2024-11-06 at 2 33 21 PM](https://github.com/user-attachments/assets/3ba43e65-cbb2-4b89-a6d9-f3c02968dbda)
 
->>>result
+To get the top 5 most streamed tracks, I used the function `.nlargest(5)` specifying
+```ruby
+# Get the top 5 most streamed stracks
+top_5_streams = streams.nlargest(5)
+
+# Get the top 5 most streamed tracks
+top5 = df.loc[top_5_streams.index, 'track_name'].reset_index(drop=True)
+
+# Display the result
+print("Top 5 streams:\n", top5)
+```
+![Screen Shot 2024-11-06 at 2 38 38 PM](https://github.com/user-attachments/assets/00e760f7-a9c2-45ba-84a1-ea546b63c4aa)
 
 ### Who are the top 5 most frequent artists based on the number of tracks in the dataset?
 
