@@ -17,7 +17,7 @@ The goal is to explore and analyze a dataset of popular Spotify tracks from 2023
 
 _____
 
-Before starting the data analysis, I first imported the Python Libraries (Pandas, Matplotlib, and Seaborn):
+Before starting the data analysis, I first imported the Python Libraries (Pandas, Matplotlib, and Seaborn).
 
 ````
 # Import the necessary libraries
@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 ````
 
-After importing the necessary libraries, I began by reading the CSV file to be used for the dataset analysis:
+After importing the necessary libraries, I began by reading the CSV file to be used for the dataset analysis.
 
 ````
 # Read the CSV file
@@ -43,7 +43,10 @@ In the first part of this analysis, we will focus on gathering basic information
 To get the rows and columns of the dataset, I used the variable named 'shape'. By using the attribute of pandas '.shape', I was able to get the dimensions of the DataFrame easily.
 
 ````
+# Get the dimensions of the DataFrame
 shape = df.shape
+
+# Display the result
 print("Rows and Columns: ", shape)
 ````
 ![Screen Shot 2024-11-06 at 10 23 08 AM](https://github.com/user-attachments/assets/4c72923f-6f90-41a9-8d31-c2191a314732)
@@ -51,28 +54,30 @@ print("Rows and Columns: ", shape)
 
 ### What are the data types of each column? Are there any missing values?
 
-To get the data types of 
+To get the data types of each column I used the variable named 'dtype' and used the pandas attribute '.dtypes'.
  
 ````
+# Get the data types of each column
 dtype = df.dtypes
+
+# Display the result
 print("Data types of each column:\n", dtype)
 ````
->>>>result
+![Screen Shot 2024-11-06 at 10 33 09 AM](https://github.com/user-attachments/assets/9a59bb49-5c9b-4765-9096-f9bc92bdff6c)
 
->>desc
-
-to get missing values:
+To get missing values, I used '.isnull()' method, a pandas function that identifies all the NaN values in the DataFrame. Next, I used '.sum' twice to first calculate the sum of the missing values for each column, and second, it aggregates the total number of missing values across all columns. 
 ````
 missing_values = df.isnull().sum().sum()
 print("Missing values: ", missing_values)
 ````
-## Basic Descriptive Statistics
+![Screen Shot 2024-11-06 at 11 47 00 AM](https://github.com/user-attachments/assets/093e3629-0435-464a-b778-062f9cc769c3)
 
->>desc
+
+## Basic Descriptive Statistics
+In this part of the analysis, it is focused on calculating the mean, median, and standard deviation of the streams column, and explore the distributions of the released_year and artist_count columns to identify any noticeable trends or outliers.
 
 ### What are the mean, median, and standard deviation of the streams column?
-
->>desc
+I accessed the streams column using ``df['streams']`` and calculated the mean, median, and standard deviation using the pandas functions ``.mean()``, ``.median()``, and ``.std()``, respectively.
 
 ````
 mean = df['streams'].mean
