@@ -20,6 +20,7 @@ _____
 Before starting the data analysis, I first imported the Python Libraries (Pandas, Matplotlib, and Seaborn):
 
 ````
+# Import necessary libraries
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -28,6 +29,7 @@ import seaborn as sns
 After importing the necessary libraries, I began by reading the CSV file to be used for the dataset analysis:
 
 ````
+# Read the CSV file
 df = pd.read_csv('spotify-2023.csv', encoding='latin1')
 ````
 Initially, I encountered a problem because the file was not encoded in UTF-8, the standard character encoding for many datasets. UTF-8 is often the default encoding when working with CSV files in Python, but some files may use different encodings, such as 'latin1' (also known as ISO-8859-1). Using the correct encoding (in this case, 'latin1') solved the problem, allowing the file to be read correctly.
@@ -45,9 +47,11 @@ shape = df.shape
 print("Rows and Columns: ", shape)
 ````
 
+>>> result
+
 ### What are the data types of each column? Are there any missing values?
 
->>desc
+To get the data types of 
  
 ````
 dtype = df.dtypes
