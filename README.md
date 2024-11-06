@@ -32,7 +32,7 @@ After importing the necessary libraries, I began by reading the CSV file to be u
 # Read the CSV file
 df = pd.read_csv('spotify-2023.csv', encoding='latin1')
 ````
-Initially, I encountered a problem because the file was not encoded in UTF-8, the standard character encoding for many datasets. UTF-8 is often the default encoding when working with CSV files in Python, but some files may use different encodings, such as 'latin1' (also known as ISO-8859-1). Using the correct encoding (in this case, 'latin1') solved the problem, allowing the file to be read correctly.
+Initially, I encountered a problem because the file was not encoded in UTF-8, the standard character encoding for many datasets. UTF-8 is often the default encoding when working with CSV files in Python, but some files may use different encodings, such as ``latin1`` (also known as ISO-8859-1). Using the correct encoding (in this case, 'latin1') solved the problem, allowing the file to be read correctly.
 
 ## Overview of Dataet
 
@@ -40,7 +40,7 @@ In the first part of this analysis, we will focus on gathering basic information
 
 ### How many rows and columns does the dataset contain?¶
 
-To get the rows and columns of the dataset, I used the variable named 'shape'. By using the attribute of pandas '.shape', I was able to get the dimensions of the DataFrame easily.
+To get the rows and columns of the dataset, I used the variable named ``shape``. By using the attribute of pandas ``.shape``, I was able to get the dimensions of the DataFrame easily.
 
 ````
 # Get the dimensions of the DataFrame
@@ -54,7 +54,7 @@ print("Rows and Columns: ", shape)
 
 ### What are the data types of each column? Are there any missing values?
 
-To get the data types of each column I used the variable named 'dtype' and used the pandas attribute '.dtypes'.
+To get the data types of each column I used the variable named ``dtype`` and used the pandas attribute ``.dtypes``.
  
 ````
 # Get the data types of each column
@@ -65,7 +65,7 @@ print("Data types of each column:\n", dtype)
 ````
 ![Screen Shot 2024-11-06 at 10 33 09 AM](https://github.com/user-attachments/assets/9a59bb49-5c9b-4765-9096-f9bc92bdff6c)
 
-To get missing values, I used '.isnull()' method, a pandas function that identifies all the NaN values in the DataFrame. Next, I used '.sum' twice to first calculate the sum of the missing values for each column, and second, it aggregates the total number of missing values across all columns. 
+To get missing values, I used ``.isnull()`` method, a pandas function that identifies all the NaN values in the DataFrame. Next, I used ``.sum()`` twice to first calculate the sum of the missing values for each column, and second, it aggregates the total number of missing values across all columns. 
 ````
 missing_values = df.isnull().sum().sum()
 print("Missing values: ", missing_values)
