@@ -19,12 +19,12 @@ _____
 
 Before starting the data analysis, I first imported the Python Libraries (Pandas, Matplotlib, and Seaborn).
 
-````
+```ruby
 # Import the necessary libraries
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-````
+```
 
 After importing the necessary libraries, I began by reading the CSV file to be used for the dataset analysis.
 
@@ -128,7 +128,7 @@ plt.title('Distribution of artist_count')
 ![Screen Shot 2024-11-06 at 1 29 00 PM](https://github.com/user-attachments/assets/f27fefc4-92a5-4f48-91cd-a9b8915cc577)
 
 
-To identify outliers in the data, a box plot is the most effective visualization method. Therefore, I used a box plot to highlight any outliers.
+A box plot is the most effective visualization method for identifying outliers in the data. Therefore, I used a box plot to highlight any outliers.
 ````
 #Create a box plot to identify the outliers
 sns.boxplot(x='released_year', y='artist_count', data=df)
@@ -138,19 +138,20 @@ plt.title('Box plot of artist_count by released_year')
 
 
 ## Top Performers
-
->>desc
+In this part of the analysis, we aim to identify the track with the highest number of streams and determine the most frequently appearing artists in the dataset.
 
 ### Which track has the highest number of streams? Display the top 5 most streamed tracks.
 
 >> desc
 
 ````
+# Create a variable for streams
 streams = df['streams']
-# Ensure 'streams' is numeric and retrieve top 5 tracks
-df['streams'] = pd.to_numeric(df['streams'], errors='coerce')
 
+# Get the top 5 most streamed stracks
 top_5_streams = df.nlargest(5, 'streams')['track_name']
+
+# Display the result
 print("Top 5 streams:\n", top_5_streams)
 ````
 
