@@ -93,10 +93,12 @@ In this part of the analysis, it is focused on calculating the mean, median, and
 I accessed the streams column using ``df['streams']`` and calculated the mean, median, and standard deviation using the pandas functions ``.mean()``, ``.median()``, and ``.std()``, respectively.
 
 ```ruby
-mean = df['streams'].mean
-median = df['streams'].median
-sd = df['streams'].std
+# Get the mean, median, and standard deviation of streams
+mean = df['streams'].mean()
+median = df['streams'].median()
+sd = df['streams'].std()
 
+# Display the mean, median, and standard deviation
 print("Mean:\n",mean,"\n\n", "Median:\n",median,"\n\n","Standard Deviation:\n",sd)
 ```
 ![Screen Shot 2024-11-06 at 1 23 43 PM](https://github.com/user-attachments/assets/dd124a11-2bbf-4bde-9e6b-cfb98ef22d77)
@@ -129,13 +131,26 @@ plt.title('Distribution of artist_count')
 
 
 A box plot is the most effective visualization method for identifying outliers in the data. Therefore, I used a box plot to highlight any outliers.
-```ruby
-#Create a box plot to identify the outliers
-sns.boxplot(x='released_year', y='artist_count', data=df)
-plt.title('Box plot of artist_count by released_year')
-```
-![Screen Shot 2024-11-06 at 1 37 16 PM](https://github.com/user-attachments/assets/f046474a-e413-4138-85ef-707710f99935)
 
+Box plot of released_year:
+```ruby
+# Create a box plot to identify the outliers
+df['released_year'].plot(kind='box')
+
+# Add a title
+plt.title('Box plot of released_year')
+```
+![Screen Shot 2024-11-07 at 12 38 30 AM](https://github.com/user-attachments/assets/4c2325cb-6063-4310-8ea3-a5f98b241df9)
+
+Box plot of artist_count:
+```ruby
+# Create a box plot to identify the outliers
+df['artist_count'].plot(kind='box')
+
+# Add a title
+plt.title('Box plot of artist_count')
+```
+![Screen Shot 2024-11-07 at 12 39 09 AM](https://github.com/user-attachments/assets/9b350c29-b660-4110-8001-05af634b3a34)
 
 ## Top Performers
 In this part of the analysis, we aim to identify the track with the highest number of streams and determine the most frequently appearing artists in the dataset.
@@ -158,7 +173,7 @@ print("Track with highest number of streams: ", highest_streams)
 ```
 ![Screen Shot 2024-11-06 at 2 33 21 PM](https://github.com/user-attachments/assets/3ba43e65-cbb2-4b89-a6d9-f3c02968dbda)
 
-To get the top 5 most streamed tracks, I used the function `.nlargest(5)` specifying
+To identify the top 5 most streamed tracks, I used the `.nlargest(5)` function on the streams column to retrieve the 5 highest stream counts. Then, I created a variable `top5` by applying `.loc[]` to access the track names corresponding to these top 5 streams. I also used `.reset_index(drop=True)` to reset the index for a cleaner result.
 ```ruby
 # Get the top 5 most streamed stracks
 top_5_streams = streams.nlargest(5)
@@ -173,17 +188,17 @@ print("Top 5 streams:\n", top5)
 
 ### Who are the top 5 most frequent artists based on the number of tracks in the dataset?
 
->> desc
+To identify the top 5 most frequent artists, I first created a variable named `frequent_names` and used the `.value_counts()` function on the `artist(s)_name` column to count the occurrences of each artist. Then, I applied `.head(5)` to extract only the top 5 most frequent artist names.
 
 ```ruby
 # Get the 5 most frequent names in the 'track_name' column
-top_5_frequent_names = df['artist(s)_name'].value_counts().head(5)
+frequent_names = df['artist(s)_name'].value_counts().head(5)
 
 # Display the result
-print("Top 5 most frequent artists:\n", top_5_frequent_names)
+print("Top 5 most frequent artists:\n", frequent_names)
 ```
+![Screen Shot 2024-11-07 at 12 51 59 AM](https://github.com/user-attachments/assets/bada655f-34b9-49b4-b5da-f0a6fd71aad6)
 
->>>result
 
 ## Temporal Trends
 
@@ -192,6 +207,7 @@ print("Top 5 most frequent artists:\n", top_5_frequent_names)
 ### Analyze the trends in the number of tracks released over time. Plot the number of tracks released per year.
 
 >> desc
+![Screen Shot 2024-11-07 at 12 51 40 AM](https://github.com/user-attachments/assets/31a1dd38-3082-4870-9203-a3bb3c7b23ae)
 
 ```ruby
 # Group data by 'released_year' and calculate mean of 'artist_count'
