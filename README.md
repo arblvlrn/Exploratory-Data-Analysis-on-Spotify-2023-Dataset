@@ -65,13 +65,26 @@ print("Data types of each column:\n", dtype)
 ````
 ![Screen Shot 2024-11-06 at 10 33 09 AM](https://github.com/user-attachments/assets/9a59bb49-5c9b-4765-9096-f9bc92bdff6c)
 
-To get missing values, I used ``.isnull()`` method, a pandas function that identifies all the NaN values in the DataFrame. Next, I used ``.sum()`` twice to first calculate the sum of the missing values for each column, and second, it aggregates the total number of missing values across all columns. 
+To get missing values, I used ``.isnull()`` method, a pandas function that identifies all the NaN values in the DataFrame. Next, I used ``.sum()`` calculate the sum of the missing values for each column. To display the values, I used ``missing_values[missing_values > 0]`` to filter the variable ``missing_values`` to show only the columns that have more than 0 missing values, along with the count of missing values in each of those columns.
 ````
-missing_values = df.isnull().sum().sum()
-print("Missing values: ", missing_values)
-````
-![Screen Shot 2024-11-06 at 11 47 00 AM](https://github.com/user-attachments/assets/093e3629-0435-464a-b778-062f9cc769c3)
+# Get the missing values
+missing_values = df.isnull().sum()
 
+# Display the missing values
+print("Missing values:\n", missing_values[missing_values > 0])
+````
+![Screen Shot 2024-11-06 at 12 34 54 PM](https://github.com/user-attachments/assets/03d56909-6a92-4930-8faf-c9578f18f829)
+
+___
+### Since there are missing values, I used coerce to convert the data to handle invalid or non-convertible values by replacing them with NaN, preventing errors and ensuring smooth data processing.
+
+```
+# use coerce to convert the data
+df['streams'] = pd.to_numeric(df['streams'], errors='coerce')
+df['in_shazam_charts'] = pd.to_numeric(df['in_shazam_charts'], errors='coerce')
+df['key'] = pd.to_numeric(df['key'], errors='coerce')
+```
+____
 
 ## Basic Descriptive Statistics
 In this part of the analysis, it is focused on calculating the mean, median, and standard deviation of the streams column, and explore the distributions of the released_year and artist_count columns to identify any noticeable trends or outliers.
