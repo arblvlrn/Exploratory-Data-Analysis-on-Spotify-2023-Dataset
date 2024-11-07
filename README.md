@@ -201,13 +201,10 @@ print("Top 5 most frequent artists:\n", frequent_names)
 
 
 ## Temporal Trends
-
->>desc
+In this part of the analysis, we examine the trends in track releases over time by plotting the number of tracks released per year and analyzing the monthly release patterns to identify any noticeable trends, including which month sees the most releases.
 
 ### Analyze the trends in the number of tracks released over time. Plot the number of tracks released per year.
-
->> desc
-![Screen Shot 2024-11-07 at 12 51 40 AM](https://github.com/user-attachments/assets/31a1dd38-3082-4870-9203-a3bb3c7b23ae)
+In this part of the analysis, I grouped the data by `released_year` and counted the number of tracks released each year using `groupby()` and `count()`. I then created a line plot to visualize the trend in track releases over time, with labels for clarity and a grid for better readability.
 
 ```ruby
 # Group data by 'released_year' and calculate mean of 'artist_count'
@@ -227,15 +224,15 @@ plt.grid(True)
 # Display the result
 plt.show()
 ```
+![Screen Shot 2024-11-07 at 5 31 08 PM](https://github.com/user-attachments/assets/26eeeb3c-6223-40a0-8860-1836e42ccc78)
 
->>>result
 
 ### Does the number of tracks released per month follow any noticeable patterns? Which month sees the most releases?
+In this code, I grouped the data by `released_month` and counted the number of tracks released in each month. Then, I created a line plot to visualize the monthly release patterns, with labels for the x and y axes, and added a grid for better readability.
 
->> desc
 
 ```ruby
-# Group data by 'released_year' and calculate mean of 'artist_count'
+# Group data by 'released_month' and calculate mean of 'artist_count'
 group = df.groupby('released_month')['track_name'].count()
 
 # Create a line plot with the grouped data
@@ -252,27 +249,16 @@ plt.grid(True)
 # Display the result
 plt.show()
 ```
+![Screen Shot 2024-11-07 at 5 34 44 PM](https://github.com/user-attachments/assets/5b2dcfc3-9671-4424-818d-4d25bbd3a443)
 
->>>result
 
 ## Genre and Music Characteristics
-
->>desc
+In this part, we are tasked to analyze how musical attributes like bpm, danceability, and energy correlate with the number of streams to identify which attributes have the strongest influence on streams. Additionally, we aim to explore whether there is a correlation between other attributes like danceability and energy, as well as valence and acousticness.
 
 ### Examine the correlation between streams and musical attributes like bpm, danceability_%, and energy_%. Which attributes seem to influence streams the most?
-
->> desc
+To get the correlation between streams and musical attributes, I first grouped the dataset by musical attributes (bpm, danceability, and energy) and calculated the average streams for each group. Then, I created scatter plots to visualize the relationship between these attributes and average streams. Finally, I added labels, a title, a legend, and a grid to improve the readability of the plot and displayed the result.
 
 ```ruby
-# Ensure numeric types
-df['bpm'] = pd.to_numeric(df['bpm'], errors='coerce')
-df['danceability_%'] = pd.to_numeric(df['danceability_%'], errors='coerce')
-df['energy_%'] = pd.to_numeric(df['energy_%'], errors='coerce')
-df['streams'] = pd.to_numeric(df['streams'], errors='coerce')
-
-# Drop any rows with NaN values in critical columns
-df = df.dropna(subset=['bpm', 'danceability_%', 'energy_%', 'streams'])
-
 # Calculate mean streams for each musical attribute
 mean_streams_bpm = df.groupby('bpm')['streams'].mean()
 mean_streams_danceability = df.groupby('danceability_%')['streams'].mean()
@@ -299,21 +285,13 @@ plt.grid(True)
 # Display the result
 plt.show()
 ```
-
->>>result
+![Screen Shot 2024-11-07 at 5 41 04 PM](https://github.com/user-attachments/assets/d3a19a70-ffd3-4f80-861c-74a71c643d21)
 
 ### Is there a correlation between danceability_% and energy_%? How about valence_% and acousticness_%?
-
->>desc
+In this code, I first set the plot style to default and defined the figure size to ensure the plot is clear. Then, I used `plt.scatter()` to create a scatter plot, plotting `danceability_%` on the x-axis and `energy_%` on the y-axis to visualize their correlation. Lastly, I added labels to the axes, a title to the plot, and a grid for better readability before displaying the result with plt.show().
 
 ```ruby
-# Ensure numeric types
-df['danceability_%'] = pd.to_numeric(df['danceability_%'], errors='coerce')
-df['energy_%'] = pd.to_numeric(df['energy_%'], errors='coerce')
-
-# Drop any rows with NaN values in critical columns
-df = df.dropna(subset=['danceability_%', 'energy_%'])
-
+# Indicate the style to default and the figure size of the plot
 plt.style.use('default')
 plt.figure(figsize=(10, 6))
 
@@ -331,19 +309,12 @@ plt.grid(True)
 # Display the result
 plt.show()
 ```
+![Screen Shot 2024-11-07 at 5 45 43 PM](https://github.com/user-attachments/assets/b276db59-ccba-4f2a-952b-b3f433f672b5)
 
->>>result
-
->>valence and acousticness desc
+For `valence_%` and `acousticness_%`, I created a scatter plot using `plt.scatter()`, plotting `valence_%` on the x-axis and `acousticness_%` on the y-axis to visualize their correlation. After adding axis labels, a title, and a grid for clarity, I displayed the plot with `plt.show()` to analyze the relationship between these two attributes.
 
 ```ruby
-# Ensure numeric types
-df['valence_%'] = pd.to_numeric(df['valence_%'], errors='coerce')
-df['acousticness_%'] = pd.to_numeric(df['acousticness_%'], errors='coerce')
-
-# Drop any rows with NaN values in critical columns
-df = df.dropna(subset=['valence_%', 'acousticness_%'])
-
+# Indicate the style to default and the figure size of the plot
 plt.style.use('default')
 plt.figure(figsize=(10, 6))
 
@@ -361,11 +332,10 @@ plt.grid(True)
 # Display the result
 plt.show()
 ```
+![Screen Shot 2024-11-07 at 5 49 02 PM](https://github.com/user-attachments/assets/72f85387-3cdc-4f19-a447-4a11486d2f8e)
 
->>>result
 
 ## Platform Popularity
-
 >>desc
 
 ### How do the numbers of tracks in spotify_playlists, deezer_playlist, and apple_playlists compare? Which platform seems to favor the most popular tracks?
