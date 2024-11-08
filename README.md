@@ -53,7 +53,7 @@ Result:
 
 ![Screen Shot 2024-11-06 at 10 23 08 AM](https://github.com/user-attachments/assets/4c72923f-6f90-41a9-8d31-c2191a314732)
 
-The dataset consists of 953 rows and 24 columns.
+>The dataset consists of 953 rows and 24 columns.
 
 ### What are the data types of each column? Are there any missing values?
 
