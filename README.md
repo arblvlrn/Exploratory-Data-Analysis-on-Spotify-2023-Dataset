@@ -70,7 +70,7 @@ Result:
 
 ![Screen Shot 2024-11-06 at 10 33 09 AM](https://github.com/user-attachments/assets/9a59bb49-5c9b-4765-9096-f9bc92bdff6c)
 
-The result shows the column's name is on the right, while the data type is on the left.
+The result shows the column's name on the left, while the data type is on the right.
 
 To get missing values, I used ``.isnull()`` method, a pandas function that identifies all the NaN values in the DataFrame. Next, I used ``.sum()`` calculate the sum of the missing values for each column. To display the values, I used ``missing_values[missing_values > 0]`` to filter the variable ``missing_values`` to show only the columns that have more than 0 missing values, along with the count of missing values in each of those columns.
 ```ruby
@@ -81,9 +81,10 @@ missing_values = df.isnull().sum()
 print("Missing values:\n", missing_values[missing_values > 0])
 ```
 Result:
+
 ![Screen Shot 2024-11-06 at 12 34 54 PM](https://github.com/user-attachments/assets/03d56909-6a92-4930-8faf-c9578f18f829)
 
-
+The missing values in the dataset is in the `streams`, `in_shazam_charts`, and `key` column.
 ___
 ### Since there are missing values, I used ``coerce`` to convert the data to handle invalid or non-convertible values by replacing them with NaN, preventing errors and ensuring smooth data processing.
 
