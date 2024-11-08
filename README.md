@@ -50,7 +50,9 @@ shape = df.shape
 print("Rows and Columns: ", shape)
 ```
 Result:
+
 ![Screen Shot 2024-11-06 at 10 23 08 AM](https://github.com/user-attachments/assets/4c72923f-6f90-41a9-8d31-c2191a314732)
+
 The dataset consists of 953 rows and 24 columns.
 
 ### What are the data types of each column? Are there any missing values?
@@ -65,7 +67,9 @@ dtype = df.dtypes
 print("Data types of each column:\n", dtype)
 ```
 Result:
+
 ![Screen Shot 2024-11-06 at 10 33 09 AM](https://github.com/user-attachments/assets/9a59bb49-5c9b-4765-9096-f9bc92bdff6c)
+
 The result shows the column's name is on the right, while the data type is on the left.
 
 To get missing values, I used ``.isnull()`` method, a pandas function that identifies all the NaN values in the DataFrame. Next, I used ``.sum()`` calculate the sum of the missing values for each column. To display the values, I used ``missing_values[missing_values > 0]`` to filter the variable ``missing_values`` to show only the columns that have more than 0 missing values, along with the count of missing values in each of those columns.
