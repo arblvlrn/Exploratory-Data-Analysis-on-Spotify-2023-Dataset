@@ -404,7 +404,7 @@ Result:
 
 ![Screen Shot 2024-11-09 at 7 02 44 PM](https://github.com/user-attachments/assets/b0ae6b3f-5c77-40a3-b1a5-6c2d54ba9bcf)
 
-The bar graph shows that the number of tracks on Spotify is higher than that on Deezer and Apple. It also indicates that Spotify favors the most popular tracks.
+>The bar graph shows that the number of tracks on Spotify is higher than that on Deezer and Apple. It also indicates that Spotify favors the most popular tracks.
 
 ## Advanced Analysis
 
@@ -416,9 +416,34 @@ In this section, we are tasked to identify patterns in tracks with the same `key
 >>desc
 
 ```ruby
+# Handle missing values 
+df.dropna(subset=['streams', 'key', 'mode'], inplace=True)
 
+# Create the first boxplot for the stream distribution by key
+plt.figure(figsize=(7, 5))  # Set figure size
+sns.boxplot(data=df, x='key', y='streams', hue='key', palette='viridis')
+plt.title('Stream Distribution by Key')
+plt.xlabel('Key')
+plt.ylabel('Streams')
+plt.tight_layout()
+plt.show()
+
+# Create the second boxplot for the stream distribution by mode
+plt.figure(figsize=(7, 5))  # Set figure size
+sns.boxplot(data=df, x='mode', y='streams', hue='mode', palette='viridis')
+plt.title('Stream Distribution by Mode')
+plt.xlabel('Mode')
+plt.ylabel('Streams')
+plt.tight_layout()
+
+# Display the result
+plt.show()
 ```
 Result:
+![Screen Shot 2024-11-09 at 8 30 24 PM](https://github.com/user-attachments/assets/8d050bd9-f8ec-452d-b0ad-eedfdf905a34)
+
+![Screen Shot 2024-11-09 at 8 30 38 PM](https://github.com/user-attachments/assets/463d1186-6b74-42d5-a21a-0b876d1c4e2f)
+
 
 
 
