@@ -112,8 +112,9 @@ sd = df['streams'].std()
 print("Mean:\n",mean,"\n\n", "Median:\n",median,"\n\n","Standard Deviation:\n",sd)
 ```
 Result:
-![Screen Shot 2024-11-06 at 1 23 43 PM](https://github.com/user-attachments/assets/dd124a11-2bbf-4bde-9e6b-cfb98ef22d77)
 
+![Screen Shot 2024-11-06 at 1 23 43 PM](https://github.com/user-attachments/assets/dd124a11-2bbf-4bde-9e6b-cfb98ef22d77)
+>The mean, median, and standard deviation of the streams column is 514137424.93907565, 290530915.0, and 566856949.0388832, respectively.
 
 ### What is the distribution of released_year and artist_count? Are there any noticeable trends or outliers?
 To analyze the distribution of the released_year and artist_count columns, I first extracted the data by assigning them to the variables ``released_year = df['released_year']`` and ``artist_count = df['artist_count']``. Then, I created separate histograms for each variable to visualize their distributions more clearly. To improve the clarity of the plots, I specified the figure size and used Matplotlib to generate the histograms for both released_year and artist_count.
@@ -138,6 +139,8 @@ plt.hist(artist_count, color='skyblue', bins=5)
 plt.xlabel('artist_count')
 plt.title('Distribution of artist_count')
 ```
+Result:
+
 ![Screen Shot 2024-11-06 at 1 29 00 PM](https://github.com/user-attachments/assets/f27fefc4-92a5-4f48-91cd-a9b8915cc577)
 
 
@@ -151,7 +154,11 @@ df['released_year'].plot(kind='box')
 # Add a title
 plt.title('Box plot of released_year')
 ```
+Result:
+
 ![Screen Shot 2024-11-07 at 12 38 30 AM](https://github.com/user-attachments/assets/4c2325cb-6063-4310-8ea3-a5f98b241df9)
+
+>Based on the plot, there are outliers around the 1940s and below.
 
 Box plot of artist_count:
 ```ruby
@@ -162,6 +169,8 @@ df['artist_count'].plot(kind='box')
 plt.title('Box plot of artist_count')
 ```
 ![Screen Shot 2024-11-07 at 12 39 09 AM](https://github.com/user-attachments/assets/9b350c29-b660-4110-8001-05af634b3a34)
+
+>Based on the plot, there are only a few outliers, which means that most values are clustered closely together with only a few high values.
 
 ## Top Performers
 In this part of the analysis, we aim to identify the track with the highest number of streams and determine the most frequently appearing artists in the dataset.
@@ -182,7 +191,11 @@ highest_streams = df.loc[max_streams, 'track_name']
 # Display the result
 print("Track with highest number of streams: ", highest_streams)
 ```
+Result:
+
 ![Screen Shot 2024-11-06 at 2 33 21 PM](https://github.com/user-attachments/assets/3ba43e65-cbb2-4b89-a6d9-f3c02968dbda)
+
+>The track with the highest stream is Blinding Lights by The Weeknd
 
 To identify the top 5 most streamed tracks, I used the `.nlargest(5)` function on the streams column to retrieve the 5 highest stream counts. Then, I created a variable `top5` by applying `.loc[]` to access the track names corresponding to these top 5 streams. I also used `.reset_index(drop=True)` to reset the index for a cleaner result.
 ```ruby
@@ -195,7 +208,11 @@ top5 = df.loc[top_5_streams.index, 'track_name'].reset_index(drop=True)
 # Display the result
 print("Top 5 streams:\n", top5)
 ```
+Result:
+
 ![Screen Shot 2024-11-06 at 2 38 38 PM](https://github.com/user-attachments/assets/00e760f7-a9c2-45ba-84a1-ea546b63c4aa)
+
+>The top 5 highest streams from the data are Blinding Lights, Shape of You, Someone You Loved, and Sunflower - Spider-Man: Into the Spider-Verse.
 
 ### Who are the top 5 most frequent artists based on the number of tracks in the dataset?
 
@@ -208,8 +225,11 @@ frequent_names = df['artist(s)_name'].value_counts().head(5)
 # Display the result
 print("Top 5 most frequent artists:\n", frequent_names)
 ```
+Result:
+
 ![Screen Shot 2024-11-07 at 12 51 59 AM](https://github.com/user-attachments/assets/bada655f-34b9-49b4-b5da-f0a6fd71aad6)
 
+>The frequent names that appear in the `track_name` column are Taylor Swift, The Weeknd, Bad Bunny, SZA, and Harry Styles.
 
 ## Temporal Trends
 In this part of the analysis, we examine the trends in track releases over time by plotting the number of tracks released per year and analyzing the monthly release patterns to identify any noticeable trends, including which month sees the most releases.
@@ -235,8 +255,11 @@ plt.grid(True)
 # Display the result
 plt.show()
 ```
+Result:
+
 ![Screen Shot 2024-11-07 at 5 31 08 PM](https://github.com/user-attachments/assets/26eeeb3c-6223-40a0-8860-1836e42ccc78)
 
+>The
 
 ### Does the number of tracks released per month follow any noticeable patterns? Which month sees the most releases?
 In this code, I grouped the data by `released_month` and counted the number of tracks released in each month. Then, I created a line plot to visualize the monthly release patterns, with labels for the x and y axes, and added a grid for better readability.
