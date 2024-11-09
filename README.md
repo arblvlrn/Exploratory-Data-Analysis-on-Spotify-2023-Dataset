@@ -500,8 +500,15 @@ Result:
 
 
 
-____
+_______________
 
+## Applications used:
+
+### Jupyter Notebook
+- Used for coding and performing the overall data analysis, including data manipulation, visualization, and exploration.
+
+### ChatGPT
+- Assisted with clarifying concepts, providing explanations, and helping with challenging parts of the analysis.
 
 
 
