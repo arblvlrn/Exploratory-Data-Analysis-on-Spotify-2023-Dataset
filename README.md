@@ -376,7 +376,7 @@ plt.show()
 Result:
 ![Screen Shot 2024-11-07 at 5 49 02 PM](https://github.com/user-attachments/assets/72f85387-3cdc-4f19-a447-4a11486d2f8e)
 
->In this plot, there is no clear way to tell about the correlation between `valence_%` on the x-axis and `acousticness_%` since they are not well-aligned with each other.
+>In this plot, there is no clear way to tell about the correlation between `valence_%` and `acousticness_%` since they are not well-aligned with each other.
 
 ## Platform Popularity
 In this part, we will compare the number of unique tracks in playlists on Spotify, Deezer, and Apple to see which platform has the most variety. We will also check which platform has the most popular tracks based on the number of unique tracks in their playlists.
