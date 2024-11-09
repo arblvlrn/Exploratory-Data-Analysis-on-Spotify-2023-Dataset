@@ -144,7 +144,7 @@ Result:
 ![Screen Shot 2024-11-06 at 1 29 00 PM](https://github.com/user-attachments/assets/f27fefc4-92a5-4f48-91cd-a9b8915cc577)
 
 
-A box plot is the most effective visualization method for identifying outliers in the data. Therefore, I used a box plot to highlight any outliers.
+>A box plot is the most effective visualization method for identifying outliers in the data. Therefore, I used a box plot to highlight any outliers.
 
 Box plot of released_year:
 ```ruby
