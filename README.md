@@ -259,7 +259,7 @@ Result:
 
 ![Screen Shot 2024-11-07 at 5 31 08 PM](https://github.com/user-attachments/assets/26eeeb3c-6223-40a0-8860-1836e42ccc78)
 
->The
+>The graph shows that the amount of released track per year is higher in 2020 than the past few years.
 
 ### Does the number of tracks released per month follow any noticeable patterns? Which month sees the most releases?
 In this code, I grouped the data by `released_month` and counted the number of tracks released in each month. Then, I created a line plot to visualize the monthly release patterns, with labels for the x and y axes, and added a grid for better readability.
@@ -285,6 +285,7 @@ plt.show()
 ```
 ![Screen Shot 2024-11-07 at 5 34 44 PM](https://github.com/user-attachments/assets/5b2dcfc3-9671-4424-818d-4d25bbd3a443)
 
+>In this graph, it shows that the month with the most released track is January and May, which indicates that these months might be popular for new music releases. This could suggest that artists or record labels tend to launch their tracks at the beginning of the year or in the spring.
 
 ## Genre and Music Characteristics
 In this part, we are tasked to analyze how musical attributes like bpm, danceability, and energy correlate with the number of streams to identify which attributes have the strongest influence on streams. Additionally, we aim to explore whether there is a correlation between other attributes like danceability and energy, as well as valence and acousticness.
@@ -319,7 +320,10 @@ plt.grid(True)
 # Display the result
 plt.show()
 ```
+Result:
 ![Screen Shot 2024-11-07 at 5 41 04 PM](https://github.com/user-attachments/assets/d3a19a70-ffd3-4f80-861c-74a71c643d21)
+
+>Based on the scatter plot, we can conclude that the attribute that influence streams the most is BPM.
 
 ### Is there a correlation between danceability_% and energy_%? How about valence_% and acousticness_%?
 In this code, I first set the plot style to default and defined the figure size to ensure the plot is clear. Then, I used `plt.scatter()` to create a scatter plot, plotting `danceability_%` on the x-axis and `energy_%` on the y-axis to visualize their correlation. Lastly, I added labels to the axes, a title to the plot, and a grid for better readability before displaying the result with plt.show().
@@ -343,7 +347,10 @@ plt.grid(True)
 # Display the result
 plt.show()
 ```
+Result:
 ![Screen Shot 2024-11-07 at 5 45 43 PM](https://github.com/user-attachments/assets/b276db59-ccba-4f2a-952b-b3f433f672b5)
+
+>The scatter plot reveals a general trend where higher danceability percentages tend to be associated with higher energy percentages.
 
 For `valence_%` and `acousticness_%`, I created a scatter plot using `plt.scatter()`, plotting `valence_%` on the x-axis and `acousticness_%` on the y-axis to visualize their correlation. After adding axis labels, a title, and a grid for clarity, I displayed the plot with `plt.show()` to analyze the relationship between these two attributes.
 
@@ -366,8 +373,10 @@ plt.grid(True)
 # Display the result
 plt.show()
 ```
+Result:
 ![Screen Shot 2024-11-07 at 5 49 02 PM](https://github.com/user-attachments/assets/72f85387-3cdc-4f19-a447-4a11486d2f8e)
 
+>In this plot, there is no clear way to tell about the correlation between `valence_%` on the x-axis and `acousticness_%` since they are not well-aligned with each other.
 
 ## Platform Popularity
 In this part, we will compare the number of unique tracks in playlists on Spotify, Deezer, and Apple to see which platform has the most variety. We will also check which platform has the most popular tracks based on the number of unique tracks in their playlists.
@@ -413,7 +422,7 @@ In this section, we are tasked to identify patterns in tracks with the same `key
 
 ### Based on the streams data, can you identify any patterns among tracks with the same key or mode (Major vs. Minor)?
 
->>desc
+In this code, I cleaned the data by removing any rows with missing values in the streams, key, or mode columns. Then, I created two boxplots to visualize the stream distribution: one based on the musical key and the other on mode (Major vs. Minor), helping identify patterns between these attributes and their streams.
 
 ```ruby
 # Handle missing values 
@@ -450,14 +459,46 @@ Result:
 
 ### Do certain genres or artists consistently appear in more playlists or charts? Perform an analysis to compare the most frequently appearing artists in playlists or charts.
 
->>desc
+I ensured that the columns indicating whether tracks appeared in playlists or charts across different platforms (Spotify, Deezer, and Apple) were numeric, replacing any non-numeric values with 0. Then, I calculated the total number of appearances for each artist across all platforms and visualized the top 10 artists with the most appearances in playlists or charts using a bar plot.
 
 ```ruby
+# Ensure the 'in_spotify_playlists', 'in_deezer_playlists', 'in_apple_playlists' columns are numeric
+df['in_spotify_playlists'] = pd.to_numeric(df['in_spotify_playlists'], errors='coerce').fillna(0)
+df['in_deezer_playlists'] = pd.to_numeric(df['in_deezer_playlists'], errors='coerce').fillna(0)
+df['in_apple_playlists'] = pd.to_numeric(df['in_apple_playlists'], errors='coerce').fillna(0)
+df['in_spotify_charts'] = pd.to_numeric(df['in_spotify_playlists'], errors='coerce').fillna(0)
+df['in_deezer_charts'] = pd.to_numeric(df['in_deezer_playlists'], errors='coerce').fillna(0)
+df['in_apple_charts'] = pd.to_numeric(df['in_apple_playlists'], errors='coerce').fillna(0)
 
+# Count how often each artist appears in any playlist (across Spotify, Deezer, Apple)
+df['total_playcharts'] = df['in_spotify_playlists'] + df['in_deezer_playlists'] + df['in_apple_playlists'] + df['in_spotify_charts'] + df['in_deezer_charts'] + df['in_apple_charts']
+
+# Group by artist and sum the total appearances across all platforms
+artistplaychart = df.groupby('artist(s)_name')['total_playcharts'].sum().reset_index()
+
+# Sort the artists by the number of playlist appearances (descending order)
+artistplaychart = artistplaychart.sort_values(by='total_playcharts', ascending=False)
+
+# Get the top N artists (for example, top 10)
+toppy = artistplaychart.head(10)
+
+# Plot the figure size
+plt.figure(figsize=(10, 6))
+sns.barplot(x='total_playcharts', y='artist(s)_name', data=toppy, palette='viridis')
+
+# Add labels
+plt.title('Most Frequently Appearing Artists on Playlists or Charts')
+plt.xlabel('Number of Playlist or Charts Appearances')
+plt.ylabel('Artist')
+plt.tight_layout()
+
+# Display the result
+plt.show()
 ```
 Result:
+![Screen Shot 2024-11-09 at 8 35 47 PM](https://github.com/user-attachments/assets/09215257-5b08-480e-b55e-159d854f03dd)
 
->>>result
+
 
 ____
 
