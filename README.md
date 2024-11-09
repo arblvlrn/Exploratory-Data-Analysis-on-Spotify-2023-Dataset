@@ -370,46 +370,46 @@ plt.show()
 
 
 ## Platform Popularity
->>desc
+In this part, we will compare the number of unique tracks in playlists on Spotify, Deezer, and Apple to see which platform has the most variety. We will also check which platform has the most popular tracks based on the number of unique tracks in their playlists.
+
 
 ### How do the numbers of tracks in spotify_playlists, deezer_playlist, and apple_playlists compare? Which platform seems to favor the most popular tracks?
 
->>desc
+I counted the number of unique tracks in playlists across three platforms: Spotify, Deezer, and Apple, using the `.nunique()` method. Then, I created a bar chart to visually compare the unique track counts for each platform.
 
 ```ruby
-# Calculate mean streams for each musical attribute
-counts_spotplay = df['in_spotify_playlists'].value_counts()
-counts_deezplay = df['in_deezer_playlists'].value_counts()
-counts_appleplay = df['in_apple_playlists'].value_counts()
+```ruby
+# Count the unique values in each playlist column
+spotplay = df['in_spotify_playlists'].nunique()
+deezplay = df['in_deezer_playlists'].nunique()
+appleplay = df['in_apple_playlists'].nunique()
 
-plt.style.use('default')
+# Create a DataFrame for the counts
+unique_counts = pd.DataFrame({
+    'Platform': ['Spotify', 'Deezer', 'Apple'],
+    'Unique Track Count': [spotplay, deezplay, appleplay]})
 
-# Create bar plots for number of tracks
-fig, ax=plt.subplots(1,3,figsize=(15,8))
+# Plot the unique counts as a bar chart
+plt.figure(figsize=(8, 5))
+sns.barplot(data=unique_counts, x='Platform', y='Unique Track Count', palette='Set2')
 
-ax[0].plot(counts_spotplay.index, counts_spotplay.values, '-', color='skyblue')
-ax[0].set_xlabel('spotify_playlists')
-ax[0].set_title('Distribution of spotify_playlists')
+# Add a label
+plt.title('Track Counts in Spotify, Deezer, and Apple Playlists')
+plt.ylabel('Track Count')
 
-
-ax[1].plot(counts_deezplay.index, counts_deezplay.values, '-', color='orange')
-ax[1].set_xlabel('deezer_playlists')
-ax[1].set_title('Distribution of deezer_playlists')
-
-ax[2].plot(counts_appleplay.index, counts_appleplay.values, '-', color='pink')
-ax[2].set_xlabel('apple_playlists')
-ax[2].set_title('Distribution of apple_playlists')
-
-plt.suptitle('numbers of tracks in spotify_playlists, deezer_playlists, and apple_playlists')
-plt.tight_layout()
+# Display the result
 plt.show()
 ```
+Result:
 
->>>result
+![Screen Shot 2024-11-09 at 7 02 44 PM](https://github.com/user-attachments/assets/b0ae6b3f-5c77-40a3-b1a5-6c2d54ba9bcf)
+
+The bar graph shows that the number of tracks on Spotify is higher than that on Deezer and Apple. It also indicates that Spotify favors the most popular tracks.
 
 ## Advanced Analysis
 
->>desc
+In this section, we are tasked to identify patterns in tracks with the same `key` or `mode` (Major vs. Minor) based on `streams` data. We will also analyze which genres or artists appear most often in playlists or charts. 
+
 
 ### Based on the streams data, can you identify any patterns among tracks with the same key or mode (Major vs. Minor)?
 
@@ -418,8 +418,10 @@ plt.show()
 ```ruby
 
 ```
+Result:
 
->>>result
+
+
 
 ### Do certain genres or artists consistently appear in more playlists or charts? Perform an analysis to compare the most frequently appearing artists in playlists or charts.
 
@@ -428,6 +430,7 @@ plt.show()
 ```ruby
 
 ```
+Result:
 
 >>>result
 
