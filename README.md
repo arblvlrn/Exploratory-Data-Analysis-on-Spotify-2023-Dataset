@@ -449,10 +449,14 @@ plt.tight_layout()
 plt.show()
 ```
 Result:
+
 ![Screen Shot 2024-11-09 at 8 30 24 PM](https://github.com/user-attachments/assets/8d050bd9-f8ec-452d-b0ad-eedfdf905a34)
+
+>We can see that the C# key has a higher number of tracks than the other keys
 
 ![Screen Shot 2024-11-09 at 8 30 38 PM](https://github.com/user-attachments/assets/463d1186-6b74-42d5-a21a-0b876d1c4e2f)
 
+>The box plots shows that the Major Mode is higher than the Minor Mode in the data.
 
 
 
@@ -498,7 +502,7 @@ plt.show()
 Result:
 ![Screen Shot 2024-11-09 at 8 35 47 PM](https://github.com/user-attachments/assets/09215257-5b08-480e-b55e-159d854f03dd)
 
-
+>We can conclude from the graph that the most frequent artist in this DataFrame is Ed Sheeran.
 
 _______________
 
